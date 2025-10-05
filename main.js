@@ -2,7 +2,7 @@
 // @name         Traverse Flashcard Helper
 // @namespace    https://robwilliams.me/
 // @version      1.9
-// @description  Improved Pinyin parsing to handle extra spacing and blank lines.
+// @description  Adds actor, set, and prop descriptions to Movie Review flashcard notes.
 // @author       Rob Williams (and Gemini Pro 2.5)
 // @match        *://traverse.link/*
 // @grant        GM_getValue
