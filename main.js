@@ -63,7 +63,7 @@
     // --- Permanent container setup (No changes) ---
     const permanentContainer = document.createElement('div');
     permanentContainer.id = 'my-stable-button-container';
-    permanentContainer.style.cssText = `position: fixed; top: 20px; right: 100px; z-index: 9999;`;
+    permanentContainer.style.cssText = `position: fixed; top: 20px; right: 300px; z-index: 9999;`;
     document.body.appendChild(permanentContainer);
 
     // --- Main button creation function ---
