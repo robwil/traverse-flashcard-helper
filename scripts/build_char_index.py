@@ -10,7 +10,7 @@ Inputs:
  - input_chars.csv   (one simplified character per line, UTF-8)
  - subtlex_file      (path to SUBTLEX-CH wordfreq XLSX file)
 Outputs:
- - char_index.json   (minified JSON, keys = single characters, values = list of up to 3 {w,f})
+ - char_index.json   (minified JSON, keys = single characters, values = list of up to 3 words in descending frequency order)
 
 Usage examples:
   python build_char_index.py -c input_chars.csv -s SUBTLEX-CH-WF/SUBTLEX-CH-WF.xlsx -o char_index.json
@@ -95,7 +95,7 @@ def read_wordfreq(path, word_col_guesses=('Word','word','wordform','WordForm','w
 
 def build_index(chars, df_words, top_n=3, convert_to_simplified=False):
     """
-    Build dictionary: char -> list of {"w": word, "f": freq} sorted by freq desc, up to top_n
+    Build dictionary: char -> list of words sorted by freq desc, up to top_n
     chars: iterable of single characters (strings)
     df_words: DataFrame with columns ['word','freq']
     """
@@ -135,7 +135,7 @@ def build_index(chars, df_words, top_n=3, convert_to_simplified=False):
             out[ch] = []
         else:
             sorted_words = sorted(words.items(), key=lambda t: -t[1])[:top_n]
-            out[ch] = [{"w": w, "f": int(freq)} for w, freq in sorted_words]
+            out[ch] = [w for w, freq in sorted_words]
 
     return out
 
